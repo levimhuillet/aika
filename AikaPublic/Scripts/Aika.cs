@@ -28,7 +28,7 @@ public class Aika : MonoBehaviour, IParentModifiable, ICarrier
     // Movement
     protected float m_Speed; // m_Speed with which aika moves
     // protected int slowForce; // force applied to slow the aika (when turning, for example)
-    protected float m_JumpHeight;
+    protected float m_JumpHeight; // the height this Aika will jump to with one upward keystroke
     protected float m_JumpForce; // force applied to send the aika into the air
     protected float m_JumpTime; // the time an Aika is allowed to extend its jump
     protected float m_JumpTimeCounter; // tracks how long the Aika has been jumping
@@ -157,7 +157,30 @@ public class Aika : MonoBehaviour, IParentModifiable, ICarrier
             _raybody.m_Velocity += gravityMove;
         }
 
+        // Horizontal
+        Move(_raybody.m_Velocity);
 
+        GameObject objCarrying = GetObjectCarrying();
+        if (objCarrying != null)
+        {
+            if (objCarrying.tag == "NewBlock")
+            {
+                //GetObjectCarrying().GetComponent<Raybody>().Move(_raybody.m_Velocity);
+
+                Carry(objCarrying);
+            }
+        }
+
+        _raybody.m_PreviousVelocity = _raybody.m_Velocity;
+
+        // reset horizontal movement each frame
+        _raybody.m_Velocity = new Vector2(0f, _raybody.m_Velocity.y);
+
+        // --------- Interactions
+
+        UpdateExitContact(); // TODO: only if in level
+        UpdatePortalContact(); // TODO: only if in metaworld
+        UpdateCrush(); // TODO: only if in level
     }
 
     /*
@@ -874,35 +897,6 @@ public class Aika : MonoBehaviour, IParentModifiable, ICarrier
 
         // Sever it from any transforms it may have had on a platform
         SeverParent();
-    }
-
-    protected void ApplyUpdate()
-    {
-
-        // Horizontal
-        Move(_raybody.m_Velocity);
-
-        GameObject objCarrying = GetObjectCarrying();
-        if (objCarrying != null)
-        {
-            if (objCarrying.tag == "NewBlock")
-            {
-                //GetObjectCarrying().GetComponent<Raybody>().Move(_raybody.m_Velocity);
-
-                Carry(objCarrying);
-            }
-        }
-
-        _raybody.m_PreviousVelocity = _raybody.m_Velocity;
-
-        // reset horizontal movement each frame
-        _raybody.m_Velocity = new Vector2(0f, _raybody.m_Velocity.y);
-
-        // --------- Interactions
-
-        UpdateExitContact(); // TODO: only if in level
-        UpdatePortalContact(); // TODO: only if in metaworld
-        UpdateCrush(); // TODO: only if in level
     }
 
     // ---------- IRaybody ---------- 

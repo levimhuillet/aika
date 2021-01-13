@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*
- * 
+ * Tracks which levels have been completed
  */
 public class GameStateManager : MonoBehaviour
 {

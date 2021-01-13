@@ -3,32 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Controls the functions available at the Main Menu
+ */ 
 public class MainMenu : MonoBehaviour
 {
-    public string nextScene;
+    public string nextScene; // the name of the scene after the main menu
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (Input.GetKeyDown("space"))
-        {
-            SceneManager.LoadScene(nextScene);
-        }
-        */
-    }
-
+    /*
+     * Starts a new game
+     */ 
     public void NewGame()
     {
         SceneManager.LoadScene(nextScene);
     }
 
+    /*
+     * Terminates the program
+     */ 
     public void Quit()
     {
         Application.Quit();

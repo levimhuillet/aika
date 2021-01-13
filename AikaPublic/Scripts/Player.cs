@@ -38,16 +38,6 @@ public class Player : Aika
      */
     new void Update()
     {
-
-        /*
-        // Case when the player has finished their movement (by interacting with exit)
-        if (m_HasFinishedMovement)
-        {
-            // Player disappears from scene on exiting
-            this.gameObject.SetActive(false);
-        }
-        */
-
         // -- Record inputs and move accordingly
 
         List<string> thisFrameMovement = new List<string>(); // tracks all movement made during the present frame
@@ -147,7 +137,6 @@ public class Player : Aika
 
         // Resolve aika Update() function
         base.Update();
-        ApplyUpdate();
     }
 
     /*

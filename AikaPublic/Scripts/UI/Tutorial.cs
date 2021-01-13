@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Attached to a Canvas, this class controls the sequence of
+ * tutorial blurbs that appear on levels featuring new interactive objects
+ */ 
 public class Tutorial : MonoBehaviour
 {
     public List<GameObject> m_Panels; // the first panel of this tutorial dialogue sequence
-    int m_PanelIndex;
-    bool m_FinishedTutorial;
+    int m_PanelIndex; // tracks which panel is displayed currently in the sequence
+    bool m_FinishedTutorial; // whether a level's tutorial has been completed
 
     // Start is called before the first frame update
     void Start()

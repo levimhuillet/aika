@@ -32,9 +32,6 @@ public class Replicate : Aika
      */
     new void Update()
     {
-
-
-
         if (!m_HasFinishedMovement)
         {
             // Replicate player movement
@@ -130,8 +127,8 @@ public class Replicate : Aika
 
         }
 
+        // Resolve aika Update() function
         base.Update();
-        ApplyUpdate();
     }
 
     /*

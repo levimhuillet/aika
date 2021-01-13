@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * Controls the functions available at the Title Screen
+ */
 public class Title : MonoBehaviour
 {
-    public string nextScene;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string nextScene; // the name of the scene after the title screen
 
     // Update is called once per frame
     void Update()

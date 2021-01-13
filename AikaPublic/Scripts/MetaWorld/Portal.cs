@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * A passage that takes the player to a new level
+ */ 
 public class Portal : MonoBehaviour
 {
-    public int portalLevel;
-    public string destinationSceneName;
-    bool m_IsOpen;
+    public int portalLevel; // the number value of this level
+    public string destinationSceneName; // the level this passage takes the player to
+    bool m_IsOpen; // whether this portal may be activated by the player
 
     SpriteRenderer m_SR; // this portal's sprite renderer
     private Sprite[] m_Sprites; // this portal's sprite resources
@@ -51,6 +54,10 @@ public class Portal : MonoBehaviour
 
     // --------- Member Functions ----------
 
+    /*
+     * Called by the player to enter this portal;
+     * takes the player to this portal's destination
+     */ 
     public void EnterPortal()
     {
         // Case when this portal is open
@@ -66,6 +73,9 @@ public class Portal : MonoBehaviour
 
     // ---------- Getters and Setters -----------
 
+    /*
+     * Returns whether this portal is open
+     */ 
     public bool GetIsOpen()
     {
         return m_IsOpen;
